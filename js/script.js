@@ -14,12 +14,7 @@ characterTypes[2][1] = typeInput('numeric');
 characterTypes[3][1] = typeInput('special'); 
 
 function typeInput (type) {
-  answer = prompt(`Would you like to include ${type} characters in your password? (Enter Yes or No only)`).toLowerCase();
-
-  while(answer !== 'yes' && answer !== 'no') {
-    answer = prompt('Please retype your answer using only Yes or No').toLowerCase();
-  }
-
+  answer = confirm(`Would you like to include ${type} characters in your password?`);
   return answer;
 }
 
@@ -43,26 +38,26 @@ function generatePassword(length, lowercase, uppercase, numeric, special) {
   var characters = '';
   var password = '';
 
-  if (lowercase === 'yes') {
+  if (lowercase === true) {
     characters += 'abcdefghijklmnopqrstuvwxyz';
   }
 
-  if (uppercase === 'yes') {
+  if (uppercase === true) {
     characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   }
 
-  if (numeric === 'yes') {
+  if (numeric === true) {
     characters += '0123456789';
   }
 
-  if (special === 'yes') {
-    characters += ' !"#$%&\'()*+,-./:;<=>?\\@[]^_`{|}~'
+  if (special === true) {
+    characters += '!"#$%&\'()*+,-./:;<=>?\\@[]^_`{|}~'
   }
 
   // Generate a length number of random chars from the characters string and add them onto the password string
   for (var i = 0; i < length; i++) {
     // Generate a random number between 0 (inclusive) and 1 (exclusive) and multiply it by the length of the characters string to produce a random index of the characters string
-    // round down the number to the nearest integer which will always be between 0 (inclusive) and the last index of the characters string (inclusive) 
+    // Round down the number to the nearest integer which will always be between 0 (inclusive) and the last index of the characters string (inclusive) 
     password += characters[Math.floor(Math.random() * characters.length)];
   }
 
