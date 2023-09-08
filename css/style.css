@@ -1,3 +1,4 @@
+/* RESETS */
 *,
 *::before,
 *::after {
@@ -17,6 +18,7 @@ body {
   background-color: #f9fbfd;
 }
 
+/* CUSTOM CLASSES */
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
