@@ -38,14 +38,33 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 // Generate a random password based off the user given criteria
 function generatePassword(length, lowercase, uppercase, numeric, special) {
-  var characters = ' !"#$%&\'()*+,-./:;<=>?\\@[]^_`{|}~'
+  var characters = '';
+  var password = '';
 
-  
-
-  for (var i = 0; i <= length; i++) {
-
+  if (lowercase === 'yes') {
+    characters += 'abcdefghijklmnopqrstuvwxyz';
   }
+
+  if (uppercase === 'yes') {
+    characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  }
+
+  if (numeric === 'yes') {
+    characters += '0123456789';
+  }
+
+  if (special === 'yes') {
+    characters += ' !"#$%&\'()*+,-./:;<=>?\\@[]^_`{|}~'
+  }
+
+  // Generate a length number of random chars from the characters string and add them onto the password string
+  for (var i = 0; i < length; i++) {
+    // Generate a random number between 0 (inclusive) and 1 (exclusive) and multiply it by the length of the characters string to produce a random index of the characters string
+    // round down the number to the nearest integer which will always be between 0 (inclusive) and the last index of the characters string (inclusive) 
+    password += characters[Math.floor(Math.random() * characters.length)];
+  }
+
+  return password;
 }
